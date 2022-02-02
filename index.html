@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COVID-19</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body ng-app="MyApp" ng-controller="MyCtrl">
+    <div class="container">
+        <div class="jumbotron py-3">
+            <h1 class="text-center">{{title}}</h1>
+            <p class="pt-3">
+                Most people infected with the virus will experience mild to moderate respiratory illness and recover without requiring special treatment. However, some will become seriously ill and require medical attention. Older people and those with underlying medical
+                conditions like cardiovascular disease, diabetes, chronic respiratory disease, or cancer are more likely to develop serious illness. Anyone can get sick with COVID-19 and become seriously ill or die at any age.
+            </p>
+            <!--   all data -->
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h3>New Confirmed Cases</h3>
+                            <h3>{{all_data.todayCases}}</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h3>New Recovered Cases</h3>
+                            <h3>{{all_data.todayRecovered}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <h3>New Death Cases</h3>
+                            <h3>{{all_data.todayDeaths}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h3>Total Confirmed Cases</h3>
+                            <h3>{{all_data.cases}}</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h3>Total Recovered Cases</h3>
+                            <h3>{{all_data.recovered}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <h3>Total Death Cases</h3>
+                            <h3>{{all_data.deaths}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end all data -->
+
+            <input type="text" class="form-control mt-4" placeholder="enter country here" ng-model="c" ng-change="get_c_data()" />
+
+            <!-- c data -->
+            <div class="container-fluid" ng-if="c_data">
+                <h1 class="text-center mt-4 text-uppercase">{{c}} STATUS</h1>
+                <div class="row text-center mt-4">
+                    <div class="col-md-4">
+                        <div class="card bg-warning text-white">
+                            <div class="card-body">
+                                <h3>Confirmed Cases</h3>
+                                <h3>{{c_data.cases}}</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card bg-success text-white">
+                            <div class="card-body">
+                                <h3>Recovered Cases</h3>
+                                <h3>{{c_data.recovered}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-danger text-white">
+                            <div class="card-body">
+                                <h3>Death Cases</h3>
+                                <h3>{{c_data.deaths}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end c data -->
+        </div>
+    </div>
+</body>
+
+</html>
